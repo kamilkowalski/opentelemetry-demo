@@ -1,0 +1,14 @@
+/* This file is for your main application css. */
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+* {
+  font-family: "Lato", sans-serif;
+}
+
+.hide-empty:empty {
+  display: none;
+}

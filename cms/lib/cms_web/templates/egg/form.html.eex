@@ -1,0 +1,21 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <%= alert_box(:error, "Oops, something went wrong! Please check the errors below.") %>
+  <% end %>
+
+  <div class="my-4">
+    <%= label f, :laid_at %>
+    <%= datetime_select f, :laid_at %>
+    <%= error_tag f, :laid_at %>
+  </div>
+
+  <div class="my-4">
+    <%= label f, :status %>
+    <%= select f, :status, ["Registered": "registered", "Incubating": "incubating", "Hatched": "hatched"] %>
+    <%= error_tag f, :status %>
+  </div>
+
+  <div>
+    <%= submit_button "Save" %>
+  </div>
+<% end %>

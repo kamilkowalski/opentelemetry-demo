@@ -1,0 +1,28 @@
+<h1 class="text-2xl">Listing Eggs</h1>
+
+<table class="table-fixed w-full my-4">
+  <thead>
+    <tr>
+      <th class="w-1/2">Laid at</th>
+      <th class="w-1/4">Status</th>
+
+      <th class="w-1/4"></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for egg <- @eggs do %>
+    <tr class="odd:bg-gray-100">
+      <td class="border border-green-500 p-2"><%= egg.laid_at %></td>
+      <td class="border border-green-500 p-2"><%= egg.status %></td>
+
+      <td class="border border-green-500 p-2">
+        <span><%= link "Show", to: Routes.egg_path(@conn, :show, egg), class: "px-1 hover:underline" %></span>
+        <span><%= link "Edit", to: Routes.egg_path(@conn, :edit, egg), class: "px-1 hover:underline" %></span>
+        <span><%= link "Delete", to: Routes.egg_path(@conn, :delete, egg), method: :delete, data: [confirm: "Are you sure?"], class: "px-1 hover:underline" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link_button "New Egg", to: Routes.egg_path(@conn, :new) %></span>

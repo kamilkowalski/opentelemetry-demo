@@ -1,0 +1,5 @@
+<h1 class="text-2xl">Time Tracking</h1>
+
+<section class="text-center my-8">
+  <%= link_button "Cluck In", to: Routes.time_tracking_path(@conn, :update), method: :patch %>
+</section>

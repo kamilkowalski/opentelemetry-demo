@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>What The Cluck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </head>
+  <body>
+    <header class="bg-green-100 py-4">
+      <section class="container mx-auto px-4 flex flex-col items-center md:flex-row md:justify-between">
+        <a href="/" class="flex items-center">
+          <img class="h-20 pr-8" src="<%= Routes.static_path(@conn, "/images/hen.png") %>" alt="What the Cluck Logo"/>
+          <span class="text-2xl font-bold">What the Cluck</span>
+        </a>
+        <nav role="navigation">
+          <ul class="my-4 text-center md:flex">
+            <li class="px-4"><%= link "Time Tracking", to: Routes.time_tracking_path(@conn, :show), class: "hover:underline" %></li>
+            <li class="px-4"><%= link "Egg Inventory", to: Routes.egg_path(@conn, :index), class: "hover:underline" %></li>
+            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
+              <li class="px-4"><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home), class: "hover:underline" %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </section>
+    </header>
+    <main role="main" class="container px-4 mx-auto my-8">
+      <%= alert_box(:info, get_flash(@conn, :info)) %>
+      <%= alert_box(:error, get_flash(@conn, :error)) %>
+      <%= @inner_content %>
+    </main>
+  </body>
+</html>

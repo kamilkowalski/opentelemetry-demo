@@ -1,0 +1,18 @@
+<h1 class="text-2xl">Show Egg</h1>
+
+<ul>
+
+  <li>
+    <strong>Laid at:</strong>
+    <%= @egg.laid_at %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @egg.status %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.egg_path(@conn, :edit, @egg), class: "px-1 hover:underline" %></span>
+<span><%= link "Back", to: Routes.egg_path(@conn, :index), class: "px-1 hover:underline" %></span>
