@@ -38,3 +38,8 @@ config :cms, Cms.TimeTracking, base_url: "http://localhost:3000"
 config :phoenix, :stacktrace_depth, 20
 
 config :phoenix, :plug_init_mode, :runtime
+
+config :opentelemetry, :processors,
+  otel_batch_processor: %{
+    exporter: {:opentelemetry_exporter, %{endpoints: [{:http, 'localhost', 55681, []}]}}
+  }

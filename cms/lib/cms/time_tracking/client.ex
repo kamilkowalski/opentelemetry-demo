@@ -7,6 +7,7 @@ defmodule Cms.TimeTracking.Client do
     config = Application.get_env(:cms, Cms.TimeTracking)
 
     middleware = [
+      TeslaMiddlewareOpentelemetry,
       Tesla.Middleware.Telemetry,
       {Tesla.Middleware.BaseUrl, config[:base_url]},
       Tesla.Middleware.JSON,

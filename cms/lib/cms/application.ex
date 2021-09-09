@@ -6,6 +6,10 @@ defmodule Cms.Application do
   use Application
 
   def start(_type, _args) do
+    OpentelemetryEcto.setup([:cms, :repo])
+    OpentelemetryPhoenix.setup()
+    OpentelemetryLoggerMetadata.setup()
+
     children = [
       # Start the Ecto repository
       Cms.Repo,

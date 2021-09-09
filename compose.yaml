@@ -37,6 +37,8 @@ services:
       DATABASE_URL: "postgres://postgres:postgres@db/cms"
       SECRET_KEY_BASE: "1CsoH8ZrNxJl+uKVbCED8FX1Z/P01iJ8zfrmNFNnGdfPcEAFqt111sgnMTeZnwZo"
       TIME_TRACKING_URL: "http://time_tracker:3000"
+      OTEL_COLLECTOR_HOST: "tempo"
+      OTEL_COLLECTOR_PORT: "55681"
     ports:
       - 4000:4000
     depends_on:

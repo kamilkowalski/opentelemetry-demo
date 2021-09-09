@@ -36,3 +36,18 @@ time_tracking_url =
     """
 
 config :cms, Cms.TimeTracking, base_url: time_tracking_url
+
+otel_collector_host = System.get_env("OTEL_COLLECTOR_HOST")
+otel_collector_port = System.get_env("OTEL_COLLECTOR_PORT")
+
+if otel_collector_host && otel_collector_port do
+  otel_collector_host = String.to_charlist(otel_collector_host)
+  {otel_collector_port, ""} = Integer.parse(otel_collector_port)
+
+  config :opentelemetry, :processors,
+    otel_batch_processor: %{
+      exporter:
+        {:opentelemetry_exporter,
+         %{endpoints: [{:http, otel_collector_host, otel_collector_port, []}]}}
+    }
+end

@@ -10,10 +10,14 @@ config :cms, CmsWeb.Endpoint,
   pubsub_server: Cms.PubSub,
   live_view: [signing_salt: "LeLxjdUx"]
 
-config :logger, :console, format: "$time $metadata[$level] $message\n"
+config :logger, :console,
+  format: "$time $metadata[$level] $message\n",
+  metadata: [:span_id, :trace_id]
 
 config :phoenix, :json_library, Jason
 
 config :tesla, adapter: Tesla.Adapter.Hackney
+
+config :opentelemetry, :resource, service: %{name: "cms"}
 
 import_config "#{Mix.env()}.exs"

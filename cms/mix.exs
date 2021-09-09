@@ -26,6 +26,12 @@ defmodule Cms.MixProject do
 
   defp deps do
     [
+      {:tesla_middleware_opentelemetry, github: "kamilkowalski/tesla_middleware_opentelemetry"},
+      {:opentelemetry_logger_metadata, "~> 0.1.0-rc"},
+      {:opentelemetry_exporter, "~> 1.0.0-rc.1"},
+      {:opentelemetry_ecto, "~> 1.0.0-rc.1"},
+      {:opentelemetry_phoenix, "~> 1.0.0-rc.2"},
+      {:opentelemetry, "~> 1.0.0-rc.2"},
       {:phoenix, "~> 1.5.10"},
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.4"},
