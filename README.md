@@ -15,13 +15,13 @@ The `instrumented` branch is the instrumented app, the outcome of going through 
 To bring up all services and test the app, run:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 If you want to work on the `cms` app, just shut it down in Docker:
 
 ```bash
-docker-compose stop cms
+docker compose stop cms
 ```
 
 # Demo steps
